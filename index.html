@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<h1 id="schemajobpostingphp">SchemaJobpostingPHP</h1>
+<h2 id="download">Download</h2>
+<p>https://github.com/Bitfertig/SchemaJobpostingPHP</p>
+<h2 id="usage">Usage</h2>
+<p>First include the jobposting php class.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span> <span class="kw">include_once</span> <span class="st">'path/to/schema-jobposting.class.php'</span><span class="ot">;</span> <span class="kw">?&gt;</span></code></pre>
+<p>Then use the class on your site to generate JSON-format or a script.</p>
+<pre class="sourceCode php"><code class="sourceCode php"><span class="kw">&lt;?php</span>
+<span class="kw">$sjp</span> = <span class="kw">new</span> SchemaJobposting<span class="ot">();</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'datePosted'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'validThrough'</span><span class="ot">,</span> <span class="fu">date</span><span class="ot">(</span><span class="st">'Y-m-d'</span><span class="ot">,</span> <span class="fu">strtotime</span><span class="ot">(</span><span class="st">'+1 year'</span><span class="ot">)));</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'title'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'description'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'employmentType'</span><span class="ot">,</span> <span class="ot">[]);</span> <span class="co">// FULL_TIME, PART_TIME, contract, temporary, seasonal, internship</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'hiringOrganization.name'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'hiringOrganization.sameAs'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'hiringOrganization.logo'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'jobLocation.address.streetAddress'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'jobLocation.address.addressLocality'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'jobLocation.address.postalCode'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'jobLocation.address.addressRegion'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span> <span class="co">// adressRegion (Land-Bundesland als ISO 3166-2 Code) https://de.wikipedia.org/wiki/ISO_3166-2</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'jobLocation.address.addressCountry'</span><span class="ot">,</span> <span class="st">''</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'baseSalary.currency'</span><span class="ot">,</span> <span class="st">'EUR'</span><span class="ot">);</span>
+<span class="kw">$sjp</span>-&gt;<span class="fu">set</span><span class="ot">(</span><span class="st">'baseSalary.value'</span><span class="ot">,</span> <span class="st">'nach Vereinbarung / Qualifikation'</span><span class="ot">);</span>
+<span class="co">//echo '&lt;pre&gt;&lt;mark&gt;|'.$sjp-&gt;toJson();echo '|&lt;/mark&gt;&lt;/pre&gt;';</span>
+<span class="fu">echo</span> <span class="kw">$sjp</span>-&gt;toScript<span class="ot">();</span>
+<span class="kw">?&gt;</span></code></pre>
+<p>You can add more with this dot notation.</p>
+</body>
+</html>
